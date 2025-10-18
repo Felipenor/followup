@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FollowUp - Download do App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .container {
+            max-width: 800px;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: bold;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px 20px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
+        .download-section {
+            margin: 50px 0;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            padding: 20px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: none;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #45a049, #4CAF50);
+        }
+
+        .download-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .download-icon {
+            margin-right: 10px;
+            font-size: 1.1em;
+        }
+
+        .info-text {
+            margin-top: 20px;
+            font-size: 0.9em;
+            opacity: 0.7;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #FFD700;
+        }
+
+        .stat-label {
+            font-size: 1em;
+            opacity: 0.8;
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .subtitle {
+                font-size: 1.1em;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                gap: 20px;
+            }
+
+            .download-btn {
+                padding: 15px 30px;
+                font-size: 1.1em;
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">📱</div>
+        
+        <h1>FollowUp</h1>
+        <p class="subtitle">
+            O aplicativo definitivo para crescer nas redes sociais!<br>
+            Complete tarefas, ganhe diamantes e impulsione seu perfil.
+        </p>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">10K+</div>
+                <div class="stat-label">Downloads</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">4.8★</div>
+                <div class="stat-label">Avaliação</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">50K+</div>
+                <div class="stat-label">Usuários Ativos</div>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">💎</div>
+                <h3>Sistema de Diamantes</h3>
+                <p>Complete tarefas simples e ganhe diamantes para trocar por seguidores, curtidas e comentários reais.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📈</div>
+                <h3>Crescimento Real</h3>
+                <p>Aumente seu engajamento de forma orgânica e segura, sem riscos para sua conta.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎯</div>
+                <h3>Tarefas Fáceis</h3>
+                <p>Tarefas simples como curtir, comentar e seguir outros usuários para ganhar recompensas.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🛡️</div>
+                <h3>100% Seguro</h3>
+                <p>O FollowUp é verificado e livre de vírus. Segue práticas para minimizar riscos — não compartilha sua senha e não executa ações que violem diretamente políticas das redes. Não há garantia absoluta, mas projetamos o app para reduzir riscos de banimento e proteger sua conta.</p>
+            </div>
+        </div>
+
+        <div class="download-section">
+            <h2 style="margin-bottom: 20px;">📲 Baixe Agora Grátis!</h2>
+            <p style="margin-bottom: 30px; opacity: 0.9;">
+                Disponível para Android. Comece a crescer nas redes sociais hoje mesmo!
+            </p>
+            
+            <a href="https://drive.google.com/file/d/1MTVx23KUblWYLuVLsSUFaVvWqztJPoTH/view?usp=sharing" target="_blank" class="download-btn pulse" download onclick="downloadAPK()">
+                <span class="download-icon">⬇️</span>
+                Baixar o APK Android - Versão Completa 
+            </a>
+            
+            <p class="info-text">
+                📱 Versão 1.0.0 | 📦 Tamanho: ~154MB | 🔒 100% Seguro<br>
+                ⚠️ Certifique-se de permitir instalação de fontes desconhecidas nas configurações do Android
+            </p>
+
+            <!-- AVISO IMPORTANTE SOBRE ATUALIZAÇÕES E SEGURANÇA -->
+            <p class="info-text" style="color: #FFD700; font-weight: bold; margin-top: 15px;">
+                ⚠️ O app pode receber atualizações novas a qualquer momento neste botão de download. Por isso, é importante sempre ficar de olho aqui no site para baixar a versão mais recente.<br>
+                🚫 O FollowUp só deve ser baixado por este site oficial. Evite baixar de outros lugares para não correr risco de vírus ou aplicativos falsos!
+            </p>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 FollowUp. Todos os direitos reservados.</p>
+            <p style="margin-top: 10px;">
+                📧 Suporte: habbobluehost2021@gmail.com | 🌐 Desenvolvido com ❤️ por <a href="https://linkr.bio/felipenor" target="_blank">Felipenor</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function downloadAPK() {
+            // Download direto do APK atualizado
+            window.location.href = 'https://drive.google.com/file/d/1MTVx23KUblWYLuVLsSUFaVvWqztJPoTH/view?usp=sharing';
+            
+            // Mostra mensagem informativa
+            setTimeout(() => {
+                alert('🚀 O download do APK será iniciado em breve!\n\n📱 Certifique-se de:\n• Permitir instalação de fontes desconhecidas\n• Ter pelo menos 200MB de espaço livre\n• Estar conectado à internet\n\n✨ Obrigado por escolher o FollowUp! \n\n⚠️ Lembre-se: O FollowUp é um aplicativo gratuito, mas pode receber atualizações novas a qualquer momento. Por isso, é importante sempre baixar a versão mais recente.');
+            }, 1000);
+        }
+
+        // Animação suave ao carregar a página
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.feature, .download-section');
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    el.style.transition = 'all 0.6s ease';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+
+        // Efeito de partículas no fundo (opcional)
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.width = '4px';
+            particle.style.height = '4px';
+            particle.style.background = 'rgba(255, 255, 255, 0.5)';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = '-10px';
+            particle.style.zIndex = '-1';
+            
+            document.body.appendChild(particle);
+            
+            const animation = particle.animate([
+                { transform: 'translateY(0px)', opacity: 1 },
+                { transform: `translateY(${window.innerHeight + 10}px)`, opacity: 0 }
+            ], {
+                duration: Math.random() * 3000 + 2000,
+                easing: 'linear'
+            });
+            
+            animation.onfinish = () => particle.remove();
+        }
+
+        // Criar partículas periodicamente
+        setInterval(createParticle, 300);
+    </script>
+</body>
+</html>
+
+<html>
+<head>
+<title>Exemplo de Pop-up com Vídeo do YouTube</title>
+<style>
+#video-popup {
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  width: 300px;
+  height: 200px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  z-index: 9999;
+}
+#video-popup iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.close-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #332f2f;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  transition: all 0.3s ease;
+}
+.close-btn:hover {
+  background-color: #ff4444;
+  transform: scale(1.1);
+}
+</style>
+</head>
+<body>
+<div id="video-popup">
+<button class="close-btn" id="close-btn">X</button>
+<iframe id="video-iframe" frameborder="0" allowfullscreen></iframe>
+</div>
+<script>
+var videos = [
+  "l9jGey2tVd8",
+  "QQWM2BujAaQ",
+  "IGSyLs07wgc",
+  "0zegJXs8I0k",
+  "2DXvEutCUJ0",
+  "ZgOYrcSPTLk",
+  "lXqGlXhwi_4",
+  "8C3PuYuJxHI",
+  "3pbGsdvg--4",
+  "ElWyIQs3d64",
+  "6HqJH8Vf0IA",
+  "Z56VyICr_gs",
+  "6myOmfCcwv4",
+  "HRRRUHbg4ps",
+  "6MGTta1Yxf4",
+  "SHe49S7lpvs",
+  "LdcMtSvQyDM",
+  "ydo0HYPBitM",
+  "E79Ggli3a30",
+  "X48NsvjOEC8",
+  "EL99ePChnG4",
+  "r65hBefPMFA",
+  "aW-eaYPKbTw",
+  "-06RnQ4hF4o",
+];
+
+var video = videos[Math.floor(Math.random() * videos.length)];
+var videoUrl = "https://www.youtube.com/embed/" + video + "?autoplay=1&mute=1";
+
+var popup = document.getElementById("video-popup");
+var iframe = document.getElementById("video-iframe");
+var closeButton = document.getElementById("close-btn");
+iframe.src = videoUrl;
+
+window.addEventListener("load", function() {
+  popup.style.display = "block";
+});
+
+closeButton.addEventListener("click", function() {
+  popup.style.display = "none";
+  window.open(videoUrl, "_blank");
+});
+
+iframe.addEventListener("ended", function() {
+  video = videos[Math.floor(Math.random() * videos.length)];
+  videoUrl = "https://www.youtube.com/embed/" + video + "?autoplay=1&mute=1";
+  iframe.src = videoUrl;
+});
+</script>
+</body>
+</html>
+
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 252, 252, 0.8); /* Cor ciano com transparência */
+      padding: 20px;
+      color: white; /* Altera a cor do texto para branco */
+      z-index: 999; /* Garante que o pop-up esteja acima de outros elementos */
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); 
+      z-index: 998; 
+    }
+
+    .close {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      font-size: 30px; 
+      cursor: pointer;
+      color: white; 
+      background-color: red; 
+      padding: 5px 10px; 
+      font-weight: bold; 
+    }
+  </style>
+  <title>Pop-up</title>
+</head>
+<body>
+  <div class="overlay" id="overlay"></div>
+  <div class="popup" id="popup">
+    <span class="close" id="close">&times;</span>
+    <h3>Inscreva-se No Meu Canal Do YouTube</h3>
+    <div id="___ytsubscribe_0" style="text-indent: 0px; ... ... margin: 0px; padding: 0px; background: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 167px; height: 48px;">
+      <iframe ... ... ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 167px; margin: 0px; border-style: none; left: 0px; ... ... visibility: visible; height: 48px;" tabindex="0" vspace="0" width="100%" id="I0_1698607711535" name="I0_1698607711535" ... ... src="https://www.youtube.com/subscribe_embed?usegapi=1&amp;channelid=UC3THqpLnrmjAnVJ93MaGfZw&amp;layout=full&amp;count=default&amp;origin=https%3A%2F%2Ffelipenordesenvolvedor.epizy.com&amp;gsrc=3p&amp;ic=1&amp;jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.pt_BR.QGnElhmNq_g.O%2Fd%3D1%2Frs%3DAHpOoo9sYmUA9Em_tDOz-9hNXbfp8V_wsQ%2Fm%3D__features__#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&amp;id=I0_1698607711535&amp;_gfid=I0_1698607711535&amp;parent=https%3A%2F%2Ffelipenordesenvolvedor.epizy.com&amp;pfname=&amp;rpctoken=15504248" ... ... data-gapiattached="true"></iframe>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var popup = document.getElementById('popup');
+      var overlay = document.getElementById('overlay');
+      var close = document.getElementById('close');
+
+      function openPopup() {
+        popup.style.display = 'block';
+        overlay.style.display = 'block';
+      }
+
+      function closePopup() {
+        popup.style.display = 'none';
+        overlay.style.display = 'none';
+      }
+
+      overlay.addEventListener('click', closePopup);
+      close.addEventListener('click', closePopup);
+
+      openPopup(); // Chama a função para abrir o pop-up
+    });
+  </script>
+</body>
+</html>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/68e0950a56b457194fb37b02/1j6mkce3t';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
